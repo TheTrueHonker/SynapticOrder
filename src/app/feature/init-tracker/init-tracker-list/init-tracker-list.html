@@ -1,0 +1,17 @@
+<div>
+  <button (click)="switchSetupMode()" matButton>{{ setupModeButtonText() }}</button>
+
+  @if (isSetupMode()) {
+    @for (characterData of characterService.allCharacters(); track characterData.id) {
+      <app-init-tracker-card [isReadOnly]="false" [characterData]="characterData"/>
+    }
+    <button matIconButton type="button" (click)="addCharacter()">
+      <mat-icon>add</mat-icon>
+    </button>
+  } @else {
+    <button (click)="takeNextTurn()" matButton>Next Turn</button>
+    @for (characterData of charactersSortedByInitiative(); track characterData.id) {
+      <app-init-tracker-card [isReadOnly]="true" [characterData]="characterData"/>
+    }
+  }
+</div>

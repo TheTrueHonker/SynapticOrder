@@ -1,0 +1,48 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <form>
+      <table>
+        <tr>
+          <td>
+            @if (isReadOnly()) {
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input [ngModel]="characterData().name" matInput readonly name="name"/>
+              </mat-form-field>
+            } @else {
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input (input)="updateCharacterName($event)" [ngModel]="characterData().name" matInput name="name"/>
+              </mat-form-field>
+            }
+          </td>
+          <td>
+            @if (isReadOnly()) {
+              <mat-form-field>
+                <mat-label>Initiative</mat-label>
+                <input [ngModel]="characterData().initiative" matInput readonly name="initiative"/>
+              </mat-form-field>
+            } @else {
+              <mat-form-field>
+                <mat-label>Initiative</mat-label>
+                <input (input)="updateInitiative($event)" [attr.readonly]="isReadOnly()"
+                       [ngModel]="characterData().initiative"
+                       matInput name="initiative"/>
+                @if (initiativeError() !== '') {
+                  <mat-hint class="mat-error">{{ initiativeError() }}</mat-hint>
+                }
+              </mat-form-field>
+            }
+          </td>
+          @if (!isReadOnly()) {
+            <td>
+              <button matIconButton type="button" (click)="deleteCharacter()">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          }
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>
