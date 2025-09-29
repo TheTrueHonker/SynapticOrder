@@ -28,7 +28,6 @@ import {MatCard, MatCardContent} from '@angular/material/card';
 export class InitTrackerCard {
   characterService = inject(CharacterService);
 
-
   characterData = input.required<CharacterData>();
   showDeleteButton = input<boolean>(true);
   isReadOnly = input<boolean>(false);
