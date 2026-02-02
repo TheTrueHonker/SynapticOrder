@@ -1,6 +1,6 @@
 # Dockerfile for Angular v20 app hosted with Nginx
 # Step 1: Build the Angular project
-FROM node:20 AS build
+FROM node:21 AS build
 
 WORKDIR /app
 
