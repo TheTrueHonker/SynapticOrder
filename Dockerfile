@@ -1,11 +1,11 @@
-# Dockerfile for Angular v20 app hosted with Nginx
+# Dockerfile for Angular v21 app hosted with Nginx
 # Step 1: Build the Angular project
 FROM node:24 AS build
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY . .
 RUN npm run build -- --output-path=dist --configuration production
